@@ -1,0 +1,196 @@
+* {
+  /* The asterisk means "Select EVERY single element on the page" */
+  margin: 0; /* Removes the default outside spacing of elements */
+  padding: 0; /* Removes the default inside spacing of elements */
+  box-sizing: border-box; /* Ensures padding doesn't make your boxes wider than you intended */
+  font-family:
+    "Segoe UI", sans-serif; /* Sets a clean, modern font for the whole page */
+} /* Ends the global reset */
+
+body {
+  /* This styles the entire visible page background */
+  background-color: #f4f4f9; /* Gives the page a very light gray color so it's easy on the eyes */
+  display: flex; /* Starts "Flexbox" - a magic tool to move things around */
+  justify-content: center; /* Moves everything to the horizontal center of the screen */
+  align-items: center; /* Moves everything to the vertical center of the screen */
+  min-height: 100vh; /* Tells the body to be at least as tall as the whole screen */
+  height: 100%;
+  margin: 0;
+  /* 0 32 sets the clicking point to the bottom-left tip of the brush */
+  cursor:
+    url("https://img.icons8.com/?size=32&id=46724&format=png&color=000000") 0 32,
+    auto;
+} /* Ends the body styling */
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: #2c3e50;
+  position: relative; /* This is the "Anchor" for our line */
+  padding-bottom: 15px; /* Creates space for the line to sit */
+}
+
+h1::after {
+  content: ""; /* Required for the line to appear */
+  position: absolute; /* Allows us to move the line freely */
+  bottom: 0; /* Places it at the very bottom of the h1 area */
+  left: 50%; /* Starts the line in the middle */
+  transform: translateX(-50%); /* Perfectly centers the line */
+
+  /* --- CONTROL THE LINE HERE --- */
+  width: 270px; /* Change this number to make the line shorter or longer */
+  height: 4px; /* The thickness of the line */
+  background-color: #2c3e50; /* The color of the line */
+  border-radius: 2px; /* Makes the ends of the line rounded and smooth */
+}
+
+.main-wrapper {
+  width: 100%; /* Ensures the wrapper stretches across the whole screen */
+  display: flex;
+  flex-direction: column; /* Stacks the Heading, Palette, and Button on top of each other */
+  align-items: center; /* Centers all three items horizontally */
+}
+
+#palette-container {
+  /* Targets the specific ID we gave our box in HTML */
+  display: flex; /* Uses Flexbox to line up our 5 colors in a row */
+  gap: 15px; /* Adds a nice 15px gap between each color card so they don't touch */
+  margin: 30px 0; /* Adds 30px of space above and below the palette */
+  padding: 20px; /* Adds space inside the container so the cards aren't hitting the edges */
+  background-color: white; /* Makes the container background white */
+  border-radius: 15px; /* Rounds the corners of the main container */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Adds a soft shadow to make it look like it's "floating" */
+} /* Ends the palette container styling */
+
+.color-card {
+  /* This styles each individual color "strip" */
+  display: flex; /* Helps us center the text inside the card later */
+  flex-direction: column; /* Stacks the color box on top of the text label */
+  align-items: center; /* Centers the text horizontally inside the card */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* This tells the card to ANIMATE the move */
+  background: #fff; /* Gives the card a clean white base */
+  padding: 10px; /* Adds space around the color box and text */
+  border-radius: 12px; /* Makes the entire card's corners rounded */
+} /* Ends the color card styling */
+
+/* 2. This code runs only when the mouse is TOUCHING the card */
+.color-card:hover {
+  transform: translateY(-3px); /* Moves the card UP by 10 pixels */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a deeper shadow to make it look like it's "lifting" off the page */
+}
+
+.rect {
+  /* Targets every box with the class "rect" */
+  width: 100px; /* Gives each color strip a width of 100 pixels */
+  height: 150px; /* Gives each color strip a height of 150 pixels */
+  background-color: #3498db; /* Sets a temporary "Blue" so we can see the boxes */
+  border-radius: 8px; /* Rounds the corners of the color strip slightly */
+  margin-bottom: 10px; /* Adds space between the color box and the text below it */
+  transition: transform 0.2s; /* Makes a smooth animation when we hover later */
+  cursor: pointer; /* Changes the mouse to a "Hand" icon when touching the box */
+} /* Ends the rect styling */
+
+.hex-text {
+  /* Targets the text labels under the boxes */
+  font-weight: bold; /* Makes the #FFFFFF text look thicker and easier to read */
+  color: #333333; /* Sets the text to a dark gray color */
+  text-transform: uppercase; /* Ensures the color codes are always in ALL CAPS */
+}
+/* Ends the text styling */
+
+#generate-btn {
+  /* Targets the specific ID we gave our button in HTML */
+  padding: 12px 30px; /* Adds 12px space on top/bottom and 30px on left/right inside the button */
+  font-size: 1.1rem; /* Makes the text slightly larger and easier to read */
+  background-color: #2c3e50; /* Gives the button a professional dark navy color */
+  color: white; /* Makes the "Generate New Color" text white so it pops */
+  border: none; /* Removes the ugly default grey border around the button */
+  border-radius: 20px; /* Makes the button look "Pill-shaped" with fully rounded ends */
+  cursor: pointer; /* Changes the mouse to a pointing hand when hovering over it */
+  font-weight: 600; /* Makes the text a bit thicker (Semi-bold) */
+  transition: all 0.3s ease; /* Tells the button to "animate" any changes slowly */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adds a shadow so it looks like it sits above the page */
+} /* Ends the main button styling */
+
+#generate-btn:hover {
+  /* This code only runs when your mouse is TOUCHING the button */
+  background-color: #34495e; /* Makes the button a slightly lighter navy when hovered */
+  transform: translateY(
+    -1px
+  ); /* Physically moves the button UP by 3 pixels (very cool effect!) */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Makes the shadow deeper as it "lifts" off the page */
+} /* Ends the hover effect */
+
+#generate-btn:active {
+  /* This code only runs at the exact moment you CLICK the button */
+  transform: translateY(
+    1px
+  ); /* Moves the button DOWN slightly to look like a real physical click */
+} /* Ends the click effect */
+
+.color-info {
+  display: flex; /* Lines up the text and the button in a row */
+  align-items: center; /* Centers them vertically */
+  gap: 1px; /* Space between the text and the icon */
+  margin-top: 5px;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.1s;
+}
+
+.copy-btn:hover {
+  transform: scale(1.2); /* Makes the icon grow when you touch it */
+}
+
+/* This code only runs on screens smaller than 768px (Tablets) */
+@media (max-width: 768px) {
+  #palette-container {
+    gap: 10px; /* Reduces the gap between cards */
+    padding: 15px;
+  }
+
+  .rect {
+    width: 80px; /* Makes the color boxes slightly smaller */
+    height: 120px;
+  }
+}
+
+/* This code only runs on screens smaller than 480px (Smartphones) */
+@media (max-width: 480px) {
+  #palette-container {
+    flex-direction: column; /* THE MAGIC LINE: Stacks the colors vertically */
+    align-items: center;
+    width: 90%; /* Makes the container take up most of the phone width */
+  }
+
+  .color-card {
+    width: 100%; /* Makes each card wider for easy tapping */
+    flex-direction: row; /* Puts the color box and text side-by-side on mobile */
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 1px solid #eee; /* Adds a tiny divider between colors */
+  }
+
+  @media (max-width: 480px) {
+    .color-card:hover {
+      transform: none; /* Disables the jump on phones */
+    }
+  }
+
+  .rect {
+    width: 60px; /* Small square for mobile */
+    height: 60px;
+    margin-bottom: 0; /* Removes the bottom margin since they are now side-by-side */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Makes the title smaller so it doesn't wrap weirdly */
+  }
+}
